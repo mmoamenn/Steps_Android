@@ -4,6 +4,8 @@ Is android component to show your steps in modern view.
  
  **Sample**
  
+ ![Circle Image Steps](https://github.com/mmoamenn/Steps_Android/blob/master/samples/videotogif_2017.04.21_17.54.05.gif)
+ 
  **Installation**
  
  Add it in your root build.gradle at the end of repositories:
