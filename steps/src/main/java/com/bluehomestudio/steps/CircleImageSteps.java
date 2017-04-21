@@ -74,7 +74,7 @@ public class CircleImageSteps extends RelativeLayout {
      * @param tag              View tag usually the step number
      * @param drawableResource drawable resource of view
      */
-    private void addView(int tag, @DrawableRes int drawableResource) {
+    private void addView(int tag, @DrawableRes int drawableResource, boolean isLastStep) {
         // inflate view to component
         View view = LayoutInflater.from(getContext()).inflate(R.layout.step_view_item, rootView, false);
 
@@ -90,6 +90,12 @@ public class CircleImageSteps extends RelativeLayout {
         //add Image icon to view and add view
         ((ImageView) view.findViewById(R.id.iv_main_step_image)).setImageResource(drawableResource);
         rootView.addView(view);
+
+        if (!isLastStep) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.split_view_item, rootView, false);
+            rootView.addView(view);
+        }
+
     }
 
     /**
@@ -113,7 +119,8 @@ public class CircleImageSteps extends RelativeLayout {
         // add steps to main view
         for (Integer drawableId : drawableResources) {
             stepsImages.add(drawableId);
-            addView(stepNumber++, drawableId);
+            addView(stepNumber, drawableId, (drawableResources.length-1) == stepNumber);
+            stepNumber++;
         }
         //get to the 1st step
         goToStep(0);
@@ -123,7 +130,7 @@ public class CircleImageSteps extends RelativeLayout {
      * Function to move to the next step
      */
     public void nextStep() {
-        if (stepsImages.size() == selectedStep) return;
+        if (stepsImages.size() - 1 == selectedStep) return;
         selectedStep++;
         goToStep(selectedStep);
     }
@@ -144,7 +151,7 @@ public class CircleImageSteps extends RelativeLayout {
      */
     public void goToStep(int stepNumber) {
         //set all steps in inactive mode
-        for (int i = 0; i < stepNumber; i++) {
+        for (int i = 0; i < stepsImages.size(); i++) {
             rootView.findViewWithTag(i).setBackgroundResource(R.drawable.circle_step_view);
             setStepColorStatus(false, rootView.findViewWithTag(i));
         }

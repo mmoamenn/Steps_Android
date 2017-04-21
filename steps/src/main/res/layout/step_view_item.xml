@@ -3,7 +3,7 @@
     android:id="@+id/iv_main_step_image"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="2dp"
+    android:padding="8dp"
     android:layout_margin="10dp"
     android:background="@drawable/circle_step_view"
     android:scaleType="fitCenter" />
