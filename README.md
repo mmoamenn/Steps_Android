@@ -20,7 +20,7 @@ Is android component to show your steps in modern view.
  Step 2. Add the dependency
  
  	dependencies {
- 	     compile 'com.github.mmoamenn:Steps_Android:1.0.0'
+ 	     compile 'com.github.mmoamenn:Steps_Android:0.0.1'
      }
 
  	
